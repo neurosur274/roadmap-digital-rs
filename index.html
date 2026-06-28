@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadmap Digital RS — DMI Assessment & Prioritas Implementasi</title>
+<style>
+:root{
+  --navy:#1F3864;--navy2:#162447;--gold:#E8952A;--gold2:#F4B942;
+  --green:#1A6B3A;--red:#B01020;--blue:#2471A3;--slate:#2C3E50;
+  --g100:#F4F6F9;--g200:#E8ECF2;--g500:#7F8C8D;--white:#FFFFFF;
+  --human:#C0392B;--org:#2471A3;--tech:#1A6B3A;
+  --l1:#7F8C8D;--l2:#935116;--l3:#1A5276;--l4:#1A6B3A;--l5:#6C3483;
+  --q1:#C0392B;--q2:#1A6B3A;--q3:#E8952A;--q4:#7F8C8D;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--g100);color:#1a1a2e;}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy2) 0%,var(--navy) 60%,#1A5276 100%);
+  color:white;padding:22px 28px 18px;border-bottom:4px solid var(--gold);}
+.logo-box{display:flex;align-items:center;background:white;border-radius:8px;
+  padding:8px 14px;gap:0;flex-shrink:0;margin-bottom:12px;width:fit-content;}
+.logo-col{width:110px;display:flex;flex-direction:column;align-items:center;}
+.logo-col.l{padding-right:10px;border-right:2px solid #D0D0D0;}
+.logo-col.r{padding-left:10px;}
+.logo-col img{height:58px;width:auto;display:block;}
+.logo-col .ln{font-size:.64rem;font-weight:800;margin-top:4px;text-align:center;letter-spacing:.4px;}
+.logo-col.l .ln{color:#1A5276;} .logo-col.r .ln{color:#1F3864;}
+.logo-col .ls{font-size:.39rem;font-weight:600;text-align:center;line-height:1.35;margin-top:1px;}
+.logo-col.l .ls{color:#1A5276;} .logo-col.r .ls{color:#1F3864;}
+.hero-name{font-size:.76rem;font-weight:700;color:#FFF;letter-spacing:.2px;}
+.hero-role{font-size:.64rem;color:rgba(255,255,255,.72);margin-top:2px;}
+.hero-ver{font-size:.56rem;color:var(--gold2);margin-top:3px;font-weight:700;letter-spacing:.6px;}
+.hero-hdr{display:flex;align-items:center;gap:20px;margin-bottom:10px;}
+.hero-ttl{font-size:1.32rem;font-weight:800;line-height:1.2;letter-spacing:-.3px;}
+.hero-ttl span{color:var(--gold2);}
+.hero-sub-ttl{font-size:.75rem;color:rgba(255,255,255,.75);font-style:italic;margin-top:3px;}
+.hero-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px;}
+.htag{font-size:.66rem;padding:3px 9px;border-radius:9px;font-weight:600;
+  background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);}
+.htag.gold{background:rgba(232,149,42,.2);color:var(--gold2);border:1px solid rgba(232,149,42,.3);}
+
+/* WRAP */
+.wrap{max-width:900px;margin:0 auto;}
+
+/* SECTION */
+.sec{padding:22px 24px 8px;}
+.sec-lbl{font-size:.62rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--g500);margin-bottom:4px;}
+.sec-ttl{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:3px;}
+.sec-dsc{font-size:.78rem;color:var(--g500);line-height:1.6;margin-bottom:14px;}
+
+/* INFO BOXES */
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
+.info-box{background:white;border-radius:10px;border:1px solid var(--g200);
+  padding:14px;position:relative;overflow:hidden;}
+.info-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.info-box.pi::before{background:#6C3483;}
+.info-box.cv::before{background:var(--navy);}
+.info-box.dm::before{background:var(--green);}
+.info-icon{font-size:1.4rem;margin-bottom:6px;}
+.info-title{font-size:.78rem;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.info-desc{font-size:.7rem;color:var(--g500);line-height:1.5;}
+.info-ref{font-size:.6rem;margin-top:6px;padding:4px 7px;border-radius:5px;
+  font-weight:600;display:inline-block;}
+.info-box.pi .info-ref{background:#F3EAF8;color:#6C3483;}
+.info-box.cv .info-ref{background:#EAF0FA;color:var(--navy);}
+.info-box.dm .info-ref{background:#EAFAF1;color:var(--green);}
+
+/* PREREQ HBL */
+.prereq{background:#FFF8F0;border:1.5px solid var(--gold);border-radius:10px;
+  padding:14px 16px;margin-bottom:16px;}
+.prereq-head{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.prereq-badge{background:var(--gold);color:white;font-size:.6rem;font-weight:800;
+  padding:2px 8px;border-radius:6px;letter-spacing:.5px;}
+.prereq-title{font-size:.88rem;font-weight:700;color:#B06010;}
+.prereq-body{font-size:.76rem;color:#444;line-height:1.65;}
+.prereq-ref{font-size:.62rem;color:#B06010;margin-top:6px;font-weight:600;}
+
+/* PREREQ HUMAN */
+.prereq-human{background:#FEF0F0;border:1.5px solid #E74C3C;border-radius:10px;
+  padding:14px 16px;margin-bottom:16px;}
+.prereq-human .prereq-title{color:#922B21;}
+.prereq-human .prereq-body{color:#444;}
+.prereq-human .prereq-ref{color:#922B21;}
+.prereq-human .prereq-badge{background:#E74C3C;}
+
+/* DMI ASSESSMENT */
+.dmi-form{background:white;border-radius:10px;border:1px solid var(--g200);
+  padding:18px;margin-bottom:16px;}
+.dmi-komponen{margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--g200);}
+.dmi-komponen:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.dmi-k-head{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.dmi-k-num{width:22px;height:22px;border-radius:50%;background:var(--navy);
+  color:white;font-size:.6rem;font-weight:800;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;}
+.dmi-k-title{font-size:.8rem;font-weight:700;color:var(--navy);}
+.dmi-k-sub{font-size:.65rem;color:var(--g500);}
+.dmi-opts{display:flex;flex-direction:column;gap:5px;}
+.dmi-opt{display:flex;align-items:flex-start;gap:8px;padding:7px 10px;
+  border-radius:7px;border:1.5px solid var(--g200);background:white;
+  cursor:pointer;transition:all .15s;}
+.dmi-opt:hover{border-color:var(--navy);background:var(--g100);}
+.dmi-opt.sel{border-color:var(--blue);background:#EAF4FF;}
+.dmi-opt-val{font-size:.58rem;font-weight:800;color:var(--g500);flex-shrink:0;
+  width:16px;height:16px;border-radius:50%;border:1.5px solid var(--g300);
+  display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.dmi-opt.sel .dmi-opt-val{background:var(--blue);color:white;border-color:var(--blue);}
+.dmi-opt-txt{font-size:.72rem;color:#333;line-height:1.4;}
+.dmi-opt-hot{font-size:.58rem;padding:1px 5px;border-radius:4px;margin-top:2px;
+  display:inline-block;font-weight:600;}
+.hot-h{background:#FDECEA;color:var(--human);}
+.hot-o{background:#EAF0FA;color:var(--org);}
+.hot-t{background:#EAFAF1;color:var(--tech);}
+
+/* RESULT DMI */
+.dmi-result{display:none;border-radius:10px;padding:16px;margin-bottom:16px;}
+.dmi-result.show{display:block;}
+.dmi-res-head{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.dmi-level-badge{font-size:1.4rem;font-weight:900;width:52px;height:52px;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:white;flex-shrink:0;}
+.dmi-res-title{font-size:1rem;font-weight:700;color:var(--navy);}
+.dmi-res-sub{font-size:.74rem;color:var(--g500);margin-top:2px;}
+.dmi-gauge{margin:10px 0;}
+.dmi-gauge-bar{height:10px;border-radius:5px;background:var(--g200);
+  overflow:hidden;margin-bottom:5px;}
+.dmi-gauge-fill{height:100%;border-radius:5px;transition:width .6s ease;}
+.dmi-gauge-labels{display:flex;justify-content:space-between;}
+.dmi-gauge-label{font-size:.58rem;color:var(--g500);}
+.dmi-national{background:rgba(255,255,255,.7);border-radius:7px;
+  padding:8px 10px;margin-top:8px;font-size:.72rem;color:#333;line-height:1.5;}
+.dmi-national b{color:var(--navy);}
+.dmi-hot-profile{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px;}
+.dmi-hot-item{border-radius:7px;padding:8px;text-align:center;}
+.dmi-hot-item.hh{background:#FDECEA;}
+.dmi-hot-item.ho{background:#EAF0FA;}
+.dmi-hot-item.ht{background:#EAFAF1;}
+.dmi-hot-pct{font-size:1.1rem;font-weight:800;}
+.dmi-hot-item.hh .dmi-hot-pct{color:var(--human);}
+.dmi-hot-item.ho .dmi-hot-pct{color:var(--org);}
+.dmi-hot-item.ht .dmi-hot-pct{color:var(--tech);}
+.dmi-hot-lbl{font-size:.6rem;font-weight:600;color:#555;}
+.dmi-res-desc{font-size:.76rem;color:#444;line-height:1.65;margin-top:10px;}
+.dmi-res-rec{background:rgba(255,255,255,.8);border-radius:7px;padding:10px;
+  margin-top:10px;font-size:.74rem;color:#333;line-height:1.6;}
+.dmi-res-rec strong{color:var(--navy);}
+
+/* COVEY */
+.covey-wrap{display:none;}
+.covey-wrap.show{display:block;}
+.covey-basis{background:#EAF0FA;border-radius:8px;padding:10px 14px;
+  margin-bottom:12px;font-size:.72rem;color:#1A3A6B;line-height:1.6;
+  border-left:3px solid var(--blue);}
+.covey-basis-lbl{font-size:.6rem;font-weight:800;letter-spacing:.8px;
+  text-transform:uppercase;color:var(--blue);margin-bottom:4px;}
+.caxis{display:flex;justify-content:space-between;font-size:.62rem;
+  color:var(--g500);font-weight:600;padding:0 4px;margin-bottom:4px;}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px;}
+.qcard{border-radius:10px;padding:12px 12px 8px;background:white;
+  border:1px solid var(--g200);}
+.qcard.q1{border-top:4px solid var(--q1);}
+.qcard.q2{border-top:4px solid var(--q2);background:#F0FFF4;}
+.qcard.q3{border-top:4px solid var(--q3);}
+.qcard.q4{border-top:4px solid var(--q4);}
+.qhd{display:flex;align-items:center;gap:7px;margin-bottom:8px;}
+.qbdg{font-size:.58rem;font-weight:800;padding:2px 7px;border-radius:7px;color:white;}
+.q1 .qbdg{background:var(--q1);} .q2 .qbdg{background:var(--q2);}
+.q3 .qbdg{background:var(--q3);} .q4 .qbdg{background:var(--q4);}
+.qttl{font-size:.75rem;font-weight:700;color:var(--navy);}
+.qsub{font-size:.62rem;color:var(--g500);margin-top:1px;}
+.qitem{display:flex;align-items:center;gap:6px;padding:6px 8px;
+  border-radius:6px;margin-top:4px;cursor:pointer;transition:all .15s;
+  border:1px solid transparent;}
+.qitem:hover{background:var(--g100);border-color:var(--g200);}
+.qitem.active{background:#EAF4FF;border-color:var(--blue);}
+.qdot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.q1 .qdot{background:var(--q1);} .q2 .qdot{background:var(--q2);}
+.q3 .qdot{background:var(--q3);} .q4 .qdot{background:var(--q4);}
+.qcode{font-family:monospace;font-size:.62rem;background:var(--g100);
+  padding:1px 5px;border-radius:4px;color:var(--navy);flex-shrink:0;}
+.qlbl{font-size:.7rem;color:#444;flex:1;line-height:1.3;}
+.q2 .qlbl{color:var(--green);font-weight:600;}
+.qarr{font-size:.7rem;color:var(--blue);flex-shrink:0;}
+.qitem.nc .qarr{display:none;}
+
+/* DETAIL PANEL */
+.detail{display:none;background:white;border:2px solid var(--blue);
+  border-radius:12px;padding:16px;margin-top:10px;}
+.detail.show{display:block;animation:fadeIn .2s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.det-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.det-meta{display:flex;align-items:center;gap:8px;}
+.det-code{font-family:monospace;font-size:.72rem;background:var(--g100);
+  padding:3px 8px;border-radius:4px;font-weight:700;color:var(--navy);}
+.det-layer{font-size:.6rem;font-weight:700;padding:2px 8px;border-radius:8px;color:white;}
+.det-close{font-size:.7rem;color:var(--g500);cursor:pointer;background:none;
+  border:1.5px solid var(--g200);border-radius:8px;padding:3px 10px;transition:all .15s;}
+.det-close:hover{border-color:var(--navy);color:var(--navy);}
+.det-nama{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:10px;}
+.det-panduan{background:var(--g100);border-left:3px solid var(--blue);
+  border-radius:0 8px 8px 0;padding:10px 12px;margin-bottom:10px;}
+.det-panduan-lbl{font-size:.6rem;font-weight:700;color:var(--g500);
+  letter-spacing:.8px;text-transform:uppercase;margin-bottom:4px;}
+.det-panduan-txt{font-size:.75rem;color:#333;line-height:1.65;}
+.det-refs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;}
+.det-ref{background:var(--g100);border-radius:8px;padding:9px 10px;}
+.det-ref-lbl{font-size:.58rem;color:var(--g500);margin-bottom:3px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.5px;}
+.det-ref-val{font-size:.7rem;font-weight:600;}
+.det-gap{background:#FFF8E7;border-radius:8px;padding:9px 12px;
+  border:1px solid #F4B942;margin-bottom:12px;}
+.det-gap-lbl{font-size:.58rem;font-weight:700;color:#B06010;margin-bottom:3px;
+  text-transform:uppercase;letter-spacing:.5px;}
+.det-gap-txt{font-size:.72rem;color:#444;line-height:1.5;}
+.det-footer{display:flex;justify-content:flex-end;}
+.det-peta-btn{display:inline-flex;align-items:center;gap:6px;
+  padding:7px 14px;border-radius:20px;border:1.5px solid var(--blue);
+  background:white;color:var(--blue);font-size:.72rem;font-weight:700;
+  cursor:pointer;text-decoration:none;transition:all .15s;}
+.det-peta-btn:hover{background:var(--blue);color:white;}
+
+/* EMBED */
+.embed-sec{padding:0 24px 28px;}
+.embed-toggle{display:flex;align-items:center;gap:10px;cursor:pointer;
+  background:white;border:1.5px solid var(--g200);border-radius:10px;
+  padding:12px 16px;transition:all .2s;}
+.embed-toggle:hover{border-color:var(--navy);}
+.embed-toggle-txt{font-size:.82rem;font-weight:600;color:var(--navy);}
+.embed-toggle-sub{font-size:.68rem;color:var(--g500);margin-top:1px;}
+.embed-arr{margin-left:auto;font-size:.8rem;color:var(--g500);transition:transform .2s;}
+.embed-arr.open{transform:rotate(180deg);}
+.embed-frame{display:none;margin-top:8px;border-radius:12px;overflow:hidden;
+  border:1px solid var(--g200);}
+.embed-frame.show{display:block;}
+.embed-frame iframe{width:100%;height:680px;border:none;display:block;}
+
+/* CLOSING */
+.closing{background:linear-gradient(135deg,var(--navy2),var(--navy));
+  color:white;padding:28px 24px;}
+.closing-inner{max-width:900px;margin:0 auto;}
+.closing-q{font-size:.95rem;font-weight:300;font-style:italic;line-height:1.7;
+  max-width:580px;margin:0 auto 14px;color:rgba(255,255,255,.9);}
+.closing-q strong{font-weight:700;color:var(--gold2);font-style:normal;}
+.closing-src{font-size:.62rem;color:rgba(255,255,255,.4);text-align:center;margin-top:10px;}
+
+@media(max-width:640px){
+  .info-grid{grid-template-columns:1fr;}
+  .cgrid{grid-template-columns:1fr;}
+  .det-refs{grid-template-columns:1fr;}
+  .hero-hdr{flex-direction:column;align-items:flex-start;gap:10px;}
+  .dmi-hot-profile{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+<div class="wrap">
+  <div class="hero-hdr">
+    <div class="logo-box">
+      <div class="logo-col l">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAABQCAYAAABI1GYUAAAhzklEQVR42u17eViU5fr/53nfdzYYlmEVREVEJbdS3CoNLBdKzawz1Ck72qZpmrmlZjaMejQzNZcsrVxSS2cyzSV3AVNcEFB2UJB9lW0GGGZ53/v3B1BamnbyfOtc1++5Li624Z3789z7575huE/HYCA+MpJJAAgAiEjx9Z7ywed+SnqqrLywf7250rvJYhIl0VzDwVHMCaKJcXwtJAk8LzcLHF/tqfEq4RQocJY7X9+0afYN3MfD/uwDdDri9HpGAEilAg6ebXxk59cJr1/NyBpVXpbP1VUXxptqC49ZzDlxQN41AFW3f5Kvc//+QzUuLi7evIKp5ApFk1rjVuYq+Fdu2jTJ0XqBfwnQsLBoITZ2iEOlBLYcLBq9e1eOLjMlL7Q471K2qfzSGuDc7l8DY4zDBx+IHACkpxtZt25ptGjRIomIfvXsMMEnONxVYVVbd+yY04C/4hARa72k5PyS0JdmXYnpOGA/Ce7TrwK9n2sGBDDGEDpxowwAJs790G3C5I/b6XQ67ncumAE6ruU1f+3RGgx8K9glX2Qt6PPMeWI+K63uftqP3l30QndeYAARA8KEsDCdAAC6FV/3GD9RFzFu3CznP2hF7C8BaTBQC0iT96u6jB/9BicRVDPjho986dUFq1eHa2cYVECYAID9DHLlrqeef+29qd26aeV/qfB/FOS1isLOY2akpTmFXiCoXvt61vx/vzD2X8teB4IVBDCt1sBrtQY5ACz7ZP9zY154V/93kP+ebldHxOkZk1ILCoLf+bDu2OnzTR1tWas3frL6maM/HskKP/b9wlkTN15imyb1tbf+zbptl0bs3f1dlMNW9i93TQB3w1znkAmyuk6Du1kFd7Fp06RJ9v9LoMI9pQ/GJKJ6v4i384/GxlNHe95n3+zf99ZXqz4983HMvoWjATg2TeoLInKeu2jLI8SCeu3afvTNzLSUqEcf6aouLi4w2UkyQw2LuWygVNHoTX8rcyUiBq2BJyL5P+Yln1UOukZcwPsJRF94jBj39TUgJBQAbhC1nbN4/weRE5ZveWnCvPGDn1xbCm7QG/hfOWG6aIEBmLI8ba1HRB4JIV+aOwK+L869uFfR5qWlLmoZ5q+8EDXqn5+c79n3lXcAyGcuuvJ6hwemJwBAaOhG2U3p5O8ZhLQtwWfjj/nDO/8zi7g+sQSXYRO2nqXHOgxYXphZXBminXL4cpfQWd8B8GmxAE3fIRtEoNcIxhgALf/3ViURg444IlI8PjMlkw+7KimCdRdVcmDgS2ezeo4+mDjouR1VgkY7DwA4XgAA7vnJMas17WZfb3kI9z9hsgAw9bOrU70j80nR/wBBeKjfx9+Vj/Afnkaqrlsl8I88BwATJ16SAeCISN3zsR2NEJ6cxcAA6O4W6FhLhfUXahPEiMi537TUPD4iR1R1XxLLAQh/M+2svMd+Urn11zIACN0oCwtrvpSJCxLH+3RZS4AqoOVJ3N+u4rmdNid/fv0Vn3H5pHg8loAHBhvP2Z/sMDKJmCZyEQOAbrqWSkfLcxwwcPShaIX3u9ktt8V+/yIBgVPCROT9F9a1Oo6I2KD3sn5SaMsk9uD69MM/rO/e/418MwvZ2dS1Hfx/ybHNQhKRS/BAo505v/J5y2+EO6UrnQ4cEbFtCVOPTlozMAUIlRHdOSrf3ED8mcP9ujgA9NJnR4q7lJj5ATabiXnL8w9tThr6YVI21DJ7UXpWIUrqisgzIiJCodfrJYNBy09ZntSzwSIXyHEj/reSNgtJRMyYFiWL6k5s+4W5K3Iajwwvt2RYtDOChKgoMCIdM5CBJ6JbfJex5l73vgKNafn+WJZ1WK3dTcbbS6yPPDaw20+pNNJRly727Jhs2PjTFMPHCUNzg5/iJpSXkzoy0ihmZZgetljsosDKrjZrOZ1u8kZqlpdRZA+9jUXKxOzyM/+oqKyUfPxcQq9lXOms10NiTC9FskiRMUaMMWoFa4gzeOii7xrY/hjQ2HQjcQBKzRhab7HC2d2DS7rR+akbtTamdFJx1VbPyp07v0lLSomvVz+Q9/nymAGJ2y/MGHs9o9hqs9bxTKyu0uv1klarxRTdevXe6L3u6358ZzYgIyJyP523/R/GhIVRdtS1Ea0CZE4Oru9TTquAMGVcqaH/9sRZ4xPomP/pvF2PTln23EoAuJiyZ3JFXPpbADBxY6isOVr/cVO+6Q+INUd8knd5/1pWXhEfyDdZJLvZxjlZcutEFuTGir9ftnwxt/kz/TlrR+0Fo1+IbIC7iwdqCp3+/eXkx1xDehdsCxs2wtFgKnNmMlXRoCfb2nMsH+e4OfleUcrUrnW42q2xyQxTnRlylYzKs+1l18+LS0ZGTDhvaijUXa9M8nFVtCvmJd7z0sXMJSlHSk5O/GLA5Mq8hvF7/5068JaCRgveaIT4hzWq00UxAJh/oiCg0U4BRDYwmcB4qhW9lXnH5XIBdmtNzYno/bLH/qV+BJW9pohNCqmqtlIU3CsX6Pdelvcb5K+Suxa4Z4gH47evnVfQJSSgxo762jJ7wsCr1THdSkoLRVNdvcggiHIVsfpKznRpb+0GpqrvfcR4KWrfsoKH2zn3nbVl0anhKUdKTgJARY79Yn5a5R4ikr/1UeQ7MwbGqYhIdjNIg0HL66LDBB3pONxB2z/bfnr37gwAcstZgE1QCkyoFyGpebKXlclcPc9INud/gOT8vs+SMno/bXcuOidlP6Swz2nXW7FS5KyUU5E9ydnHMz2vPGF3wqYEe5guTMg+5iKaHUKe3IfzYiIHgW+2YZkKVJouVpakOhYD4CWXwv7aBUERivohznlXs4LGzX9yWid5/5Pp6eksKyErk9lCcoxpRhRfq0nvN3fjkQWH5/u9tW7Eqgpf1y+6eVewyCFGR4vz3b1Nq0jzZgBQ3uDwdQhKMIGJkOQ8mqpShQ6BhaiWg+RqN9LpOKbXX1p5RNv//D6XQ47GYyNlnlK4kweTLPbEt0d3n5bVJzRQph+/+2As+mLCvIjpzn5NFx1CI0jkJCJIjANfX8Xyrxyp3UlEiiVHhveuVaT3O3s8ZUtJknyBq4esace+w1KLaA0AENkjFgB3zOTi9ZK6Y+1jN9KV4+KmmT4HgIPJWyPTKk+F+st6bhs3eHYBwBoYuzVS/yaaNdiZiyQwQGASRAmw3shw9hlYAzMHTukewPQzpeR80ry3bE6/rKQdp0Lbe6xRuNY8Lol2m1wjBaaYd+3Ljq+KmbVmHLNYG+yfzvn+6NgFHWMUnghVOEsuxIHzDeJgtYjXtVrwn0bPfqjKcr1fQSKlBXR2ffTkmtzXWtIJIyLV4auHnfNSz/VtoFrnF58d9uPaqISF9U1Jbt5983tHbAt/oG/v3oOP5ny6sdScg1zlpZn7l2w/alyI0TrScXqml24DNLzZaQXRlTgGCAwgB5hYl09yTTFjDtiZoiMRCZHTfjiYdl7cfP1yWcbVC6WZEXPbfhE0QP6Gze6wm+25ivJC2mMpSci0iI3O7F1GAIYEDfTpKdqtXl6BCtfGUHG9w6Q2A09gl9GY7elfHy3VelVLHo3PDp3lpT2xstIIMJq2LmJqSb7ZW7CrrtuF2sBTx0/39PENXG2T8uRVhQXO5B+TXp57HHnlOaJAStsNKlSVVIhezRelZ3fQaEyzRq2snjgCExjgsIHIYeo6Nqg4c9FlSaEJav/cjGPHz5+OTi1JXvNV6MSJsoSNzFHJNr6lWDzTz83faZTKTUFqL0vT6a8yrraGBSIdx5g+BQDyE4CEPR7RDzzsrAmekMsZJxXUzN01Ou7CiStmvspWK4fbNANhTyQgrfc4uhE1cLSaLwA5cMUGD7yBatR2HVM72aOj8gXP9k6hzIlUHGQkCMx+1zwKAJIkmRkIxDEAEgSByXf2Zg0SGvM5ty7tjsdedi9JXvOmVkt8wiY/EQw0alM739LoAz+VZWBpY42dleZKtpaqCFoDeNZiQqETIdPpwDFWbco4l5FfowmSALDC7ApXU7WlvOb47qmwaHKX9+3LgYFQgzoG1qA1aHmtQcszBptOp+NQjeLzN/ZoZv5j+85zn1j7phmkYbZqPodXSCAR0u8Go9ju4QQAnNxRgUY7GA8OPAPkSoGIGCecP+Ug4VWbw3aAMY6MFTEM0IsAsZidUWWZJZ1mUP4He3uGbB7z+tQH31J/aBtdmy/fsjDy61MpVwva+Vjb1vj2YPUJWvC6D5prZH2kXtLpdEz/gX42AAfYEAnJeLtFiwDAEYiMkcab8mUMB4A2b9k2PSslO4tx9OX183Ungh/t+SofVBHLKRrvUhmlRREAyKmxEGKjCE7ioRBAcjd3Bkb9QpxV4AHeresLRJICseEtbx7Dx8bqHSJxX9kbbZNfGR+Qnpl/QXa58Ni4QutPJ5f+oD11IHdS/JqCR5IXGp8eAKMg6vV6Sa/XSwCo5bMNgAQCUIM6AGQwaHmO46Rf17l6fawIgC6cydiZfjhzF0nA12dX+PRq3//Z6kyhqrGaXO+pMtKujFMdbXDPttpkAbykQuOFXZ/QiVnLu01PLs3KroNSUoIqDzxtSVpyAGEfCIiFBOglefsV3RSC+mT/0M7JZ44d/dC/x0bBK1AYKpOJSrW/NEoTwAWpyNeiRrs4TyHk3QH9wgodTnYy1+RoZC5iflD7cNdQl/DqvRf3aqLPb6pfN/2IdeZHk7XFZTnnd686VtgiK/1WfML4+aNCsnOyQ84ZsuMCurkGFqWb4n/92lurCC3xMDLRdfGVQzZJ8xRzcHCkHf1+9KODi49FX3hOrDedhObpl1F2Otpy7qXHoTXwMEaKgJZnMIrt+m6NLytt35fHuWOW4gUjfpEtWOEXUttDpjG7efmpQ/19Q9x9vDy9FAqZymKv85AsmkXu3ux5BySFpUbM3rJ079pDaZ8+E3M6VpufWv214dMTR3U6Hdei/ZZSDhz0t/fHe2hFm5tujf7SbKelJSSbkyF6zoiv7jwv08oGRm0MGLmkrWrUOYfqiXOSS+jypwAgOGKNAgBmLNw+5cFBsxbJ/beYVW2/IbcO058hAguOiFCw2xVlHeCu9oMX4K2evHzMphHTOz8LQA0AX55e+N6/Fg/K7zPWbyyCobhrP0pgWi14AAw63EMjr2smtNrM/7Gb08J0UTk3TVK+kyEqJqaQqs/kKQCgGvrtDtXoq6R69Lv0XsPGOQPAzEX7X3946MylAKAOXLpdFXCQVP5rczShWrdmkkzHQQcOWvBhYRBuZhUYY+g22jV44Lj2UxljEAQZRs98cCc06HFzP/tfIBiII4A5z7twQanLlZSzM2yqCdGk6PTUEICYW9j0QNWwg3Wq4SnE+mxekphW2DlszJJTAIQwXbTg3HG0r9J/dZnSfx85tV/+bfNDN8puo5W7MAcMLVq6L+c2ao7hGEC8vXoL48DAM55sN+plOT+mgoC62DV5vCV1NqgeKpcuM97URR9OijbOIyIx1riBa7h+oJwhfSKoAiQGvKAOXDYXmGQHNgq/MbhfAga7GZSOdBxA3B9pw/4TGpCBiAVNnOummnO2TPlepqSalmB3eu7T4QCAiB8VAKAasGqnIuwcyfrsbXQbvLEPWljBVr7IyefNhUq/zaRq+xVpuvx78i9c0l9DcXK3o1sRFcPnblpexzeWrIbAM1I6C+TeaWVoKGQYoBIB4l52zJzg7lKTy7t2VEnU4Wibod/0RcIkO0JHMyBaaKz4fDHsF9eRBFgbfTd4hax8B9A7AEZarZb/b1CeWp1B/pJuu+s9AgWgDxdBxJyzf1jPTHnl4B0E18AeWd13z4F+iAOIwui95OPl2iTYKo5kOnhPr/omn6MBw/dEIKGvHQiXunUzyJtufP42s575WLJbYbX4rG7ba+36S0Qyo9EoAiDGmqfjOtJxumidoIvWCVrDfzLGaLYSrjgx0IZrTX90+MIDgPqFZWNVcxNIOTPZrpp8werxr639AWD0hzmTvYdvyAegUfb68KDykTPk+miMGDxq/zz+Z280yBkDONWot+CyqNi5nYF8Oy/KGvb0Au1TY2eNfHqSrptW94XHn9uKaY7gr0zSdRvz/KTAOxHkv28+BuIRyUTVK1u/gv/AV8lskThbQ0Gj5YsH+reZuSr94qne9dEzHwaIV3WZ+qHk9OhsuVNneKqrT/UIccw7tPapeALg4sJjyJh130SfyOptM19Z397f6ZR7e3nFwKfb1Xu8vc7eM3nXILPj+vMKlb02PafkAn/J92BzuaeX7gZSr9dLEyYvbldeVhRyeO/G478pLO7ZJLTE+/n5Oale/+6Kcm46KaYmk/e02AN951+Jlz364QFotTx01ByA/IYMV3Remqh88Dh5P3ySejx5cOuKLckjn31tf3LIQ1O/8wOcbvcuSw6/E/P+hVG0JG0MDV3QJ+mXyPs7BtdicSs27PEZ/czkiUAH5e+x/uwebIODfpHk1v8fHa0PvhxHLkFtZE0NEAQPNMZ/vc12bvEEaFPlQLoIY6QYDCiK/V94xS70eodXBnf18fJCZc4PSU3la/owxoNokHDp0kr5mdr4qUoZM3mrNaq4IuNH5FYqkUPGFcXIP/z07U0b2rQJKpUk6U6aFPR6vWOL4UKbg9/vnJyVmrohLS26vIULvi3ZfXfHj40laA289bi+Wi7nouHq97zk5KO0NTXZ5S5eipCxY78r3xBugnYKD5+RrDp9j91hTrkUUndyk1PPiDalFfLekunIHNFyNfVIWq2qKH2XrWPkgOcT6+I3VDZlj6oT8kfIlPWcWkW8s8xCvR5y65tU+9PUJo2LPe9MYVyYLkzIj82XWtn+mBgI27bpHV8aznQ9vMc4JyUp8bOMjNgiQMcBsfQf7zAAAIyRIrQGvtEYmejUUDtUeujl/ZxnD38H16Z7UYU17sH5p8df0T92tnVIFRuTJ6THvtb0gHcXQagRIcnacIwBHcKqiQFIzD41vlZZBQFNcNYIop+LklfyriBezlv4GvX14krkx5dWtvibg4i4SKORMcZEAI4lK3c9t+/bXc/Hx52eW16efL0Z5O/7JfvDkdgYKSp8uwZyQ+YfIO+HepCdh5OjyebnSh9Nf7Fs2aS+TzcCOiFMF474o4UziR5YDtPlWEvGG+Gt43574LI+DTb2eJfBnSP6hMsGa2QCJSbUIC2+Os4qMJXaZm+s/MIyPB/5TVPfX/vgufOpeQknNtURkduUGRuWpyVfcj99asubAGrvBeR/mJWb85wboFEOW/iJasKPJJ+URurX0qnD5PjUIbrEF4mo1VJUyp7r05wGXCKvwfu3b7y0/+dgJGNKLI19O2PhlZG0KPVpenhyt+hfX/4rUz98cszzLz1BRNziVdHTRj6rS+7c9cn3WpuBu8xg76xRg0HLp3l3u6uW02PSOUOUwc4xRqruzwyXgkcsIbfu/UjwhTPZ4S1vTOzogc2vDffes3Z8R2sc5m3m1f2f8dAo8kM68svfetq0W6uNrB27otuBarujW1MToSnl6svJ+3CG5wGHgzTvLja+WlWR5+nbdnBVckLC6zlX40syr+ybA9Ql6gw6eWnNQfLror6DT4YjfUM6tRQm93XyLFf3H/+y6NVvmugU/CBk7eHMcXDnamv93BXH27tUnbqW+FNwcYVylKQI6eokiCUBvkKsq8AX2R2VLiQ56r3btLNKEsAxPiA3z/x0SalJ4+FcVnWjPOd60bUDUUD5oT+9OUYExhjom8srI+xCQ3dbE8BATJKaSyupefpHPCfA4bA4wFnrnJ08qwI8u+aGt3n2OmOyBrTwWeoeo56RNKGRDiEgnIS2foKiDVS8Ak6iWfRQNd4oK6t3rypnCrmch4xj4CQJnEQQbXZAbILDWgZLfVaZZLr2LXBiM4BUL40n4goP904tPt/R1FjuVm81sTvZLEeMVG7OwuW4nGurXzdEExFjjDUD0enA6fWcNHbpQ/vN9sInJBsTAeJ/01SxFtQcOLlKUDq5quCsUjdpNL7nvd2Dd7z/xIZdjLEGAGgDeJuCnuxLzkEPO8ijt+RwfoAkla9ATMGTxEhySCTabGRvrIejvhyOumxOqkhqqj19CjBfICIuwbbrhYOnDk4pLskdYGqsFkx1DbBarI1EJHGsRUstmbN5CAswxhyCnMnKM6Q9id/cGK81gDdGQmQ/d/EMtOTb954EatpZGhqJGHdHs3ZIAqssq7EVFhbxpdVX28s0jeE+HV0Ge/l4Wzw9On3Y1fHDqqmRrP7m7K0DuC2Am8ld6WqRXGSwWsFxpialBeZaoA4MIGrOlbsyViw6m3T0/ayraSjJrTrBmdxiu7Z9qLhth7bk5ussE0UrJ7W0qtyvSwJGkpNKyeVkFV/brPvh5C0abSaaOOmfnww8aLbmhtutJDEQR/hFUsaAZgtnxDhOLlfKmFrtZnHTaDLVcp+jmbHmK1klp8La9lJP9W7rW6xGr3FfvWKICZ42QnGt7LADRl68tddudR4O2t27eGPk82J0+uFRR7LX7zh38axrfqJpxfgR8y63788/lHPjyrCyyqIutaYaRVOTTSJRtBOoWRbcpNlmrYlyJ54vSXbsvbi1/OXbavS9TTNHgGtqa7VYW4zjdrUUj4Z6E6soq2D5xdfcLUJ5b8/2QoRvoLeHT5tOX1wxWPfVu52bHtjfZzjvaDt178T4T8N0JMTqf2YL2E21HMKg507rBcfu1I/nHU3etuyYMWnPq/2Wftk2oualuMvHx2Uk51TUFjgOe8o7XAnu0NXs6eNBgoLRnbgHxhHJVQqWn1+Ws33xvtjW+NOc76LAAI6KHImzzLa8oQ4riUSMB9EvjCVr/oIRA+OZpAhWOB7q41Xuru5+pqnMY86pH485FXY5syBgmO9LfP2w15MOR18MHta0fsQnIW5H38lc2gL2ln8C0IXHCIuGCI4tCfqPdsetnXNsfe7sfbv31XyfsuLQ3o3n81hhuzenT1si1qgyRuSVZs6qqsrxvm5JFcQGkWt9Tqt4rQuHxOCQg5OVllsNAGIjjeCAVo22vGaC/p8jeJ51lewS7rTVRSSRub62obKyQnnDkt9R6WV9vE0Xt94+/m3jrTlByxJTfhjSeZjrNN7WaX5mdDYCh2GZpcRrwk9RV7fdPI43GLR8ZKRR/CZp1Yy9CRtWHf247K3tB5b5bY9e/X70ltx/71h1MPFS4/aoC4lxPfPSys6jVn3KXxNc5KHxtCqVTk6cIPttnS41b7HwApCfez356LYLMa3WekvUfeOrIYfqHSURDqskgRgPRr9YGrUOoYgYYFeqFY0ubh6ZzlzbQxcOXMus5hMmdXrEd5iKD5p/cVeKOXgs1tur/GfXFBcHeXbhppgL2nWNX5l8VRcF1r27lkVGGsWzBTH9vjwz6+J3qxMWbf16Lb46uvyD85+K47ccWdDZ8NOG98/sz9g/rOMr2wc926nn1eqkJ0srCjqbG+qUkJiMMcYR+7lCujlfOuQqji9IqP829rP8ca0+KjQ3uCBAQl2WsLah3n0PIzsRcQy3EOEcREjgwcHqIHl5TYmHqLoW6tFBttA/zMfWhYuYc3zH6f1dxqSs6zy6zUcFsdWz/AcXr5QVth9jrSt4Qu5SvBWMPQIilhbVjYiIzfx+9LZTBxIufLlya+a3cYu+Ob/R8vqa7995dK1x0cTUb/Hq5u+2aQ4lfrFj077v7FV5tkOukt8eH8+AGmI2kTGJbiGEmtMeODDJKhM4qhOuA/kwaptBCC1Rl0HPkU9P1dsNUtkT9iYSAcbfkkNbKwcAxDMx0Cmw2MU5NLYiVTHuwoGDD3d8vOrz0Bc7fH7ZUPlyx1Gl2z2CfN42X6/8Xt6u4NOGAp933bpWfNPz1XZP6FnBSUCPwGectak5iQ8ENQ0dc7Lki22xO3K/XPftirZbD6+YmLvVb/QyY8SLa/fN/WfqocrFurdWpVpG54zMK8t4o7auxt8u2rhWS/u54v0l9DrkKlFoSLJ8ByBaa9RyRhhv9lFGgaNchltqTR4iA/2GIRdvCmxyuLl6C300bRXP+D3g4e3uGrgq9vOrZzuMNO8ROJ91N642VLkFW6JqUwOecgkpOmQpcp6l8re+ZLkh1id9YgrnmAyvfj0o5cTBmNJJr7x93nBk0+xnghZoM9U7Dx5fXzRj6ZeTQ78ybHjRfjJ0zDvbhow8dv67NzMS8ouqi8wHG27gsiTBBB4/R16ev8V2CRyYo5Yvq7oixrTGH+EXnRHyDpqO3XZo9ZuymFABB4Cxk/2G7nk1+PG6TQ/8U9MuL1bxot/DVd/I5P4vik1leTKvihfIrt7Jqc2TmcN7o9yt6mMAzmVSseurax7u4WYPWpdadFZflU2bGoYkTbm4O+PKipWrG4yxK8bVnQh5buL6TlM/37ZqePw+0zh7Fnb+IsO9bMyJt9ij8OslpYqKOxHM9OsGAacXGx2lJ/AFa1SmBj9bE6cJck+xVCl+gLp4AbN7b+SV5To0eE0RlPXjmsqFSqdAAUJXPPh1wr99KkurHb37D7UWlJ5p0ytwUELW9ZTpKlOHyWeL9kRdOVKy+b01Lw7adeirEXHLTd0Blk5ELDyK+JYNhDseHx9QRQVYbDikm6dttwD9QyOA5pUeFjEN8iPrKs61C/NaRnzVfK6pw2TBqWCrrZIvlbUR5PVXG5WuIbJ6s7nO0wWKWp+O3EPXC7N9GuusxXywOaA2zVTZqburR2phhaX/4GG23LzT/v06PXXidMqPO9OO1swEWHpwBCkYgxX4eRJ+r/LdhcD+AzThAA/YoQMX2GvQVpmTXGUpr1fI5co6S63ZU6FQVTpEq5dC4VwlOqw+crmiROUiC6yprWknOlDUiEY/q0Uqtwp17ZrqbSXkWhNgrmoo9+gu9yktrWTVF/ENQNy1I/jT/yPzp5eC9VEg6CFFDBxTIZBclBxNKqVc3iARk8llTjZGvLtccCZRsgkyTrAQJM5qq+dAZLE7GlSMwWSB3UkCbCZrmUwiyVTvKHOyWWyNAGrAIN33NdY/c5ylcgIBPONbC0YiYkwCBwYGDiCAMUiASCIAMEmygXGSXZQkSRIZI2IEAiMSCUwSAdw3Lug+rnlr8HObTq3hi1pocGqWmH4dvzlIBHZbMYi7r0Oo+7vPTrf7Xvrl8++8pdTyId53of4bQFvLFLrpBxJ3y1tJrYCl33c8Av1dgdY09wC3KJZu42YcSLq1pPy1EUj/hdWF++ujN2lMug3J2GzB0n/kBX8rjd5VXKLfeib9ylEBiJD+zqZ7r9rh7mS1/9c7DP+56bZContFT/+TQFuj7J0B0L2Ot6T7fwn330e5Px5cpJvcl/43NEqi9HPeZxIAkRgkIoiAJIEgEidJjJjECCKBJBBzcEQSAxMJkFqITAl0f5ep7htQGadggpLJGUEFxjyIwQmABxicAXgwMGcwaBgxZzC4EMgd4NUE5k1EroyRhkDORPBgDE5MYG73E+if37XTN3tbyBMduIvHkoPrK6XjjiaHzVyKnxxW0WIqtJ2VHOKNmgLrJTjYjdqCxiSAL63OtxSRpEivym0sJ0l5pfp6TYXUxMVXF1lMsMrO3circ9Rk2ffdNPX5/+dezv8D72+fiAFk6ogAAAAASUVORK5CYII=" alt="IKKESINDO">
+        <span class="ln">IKKESINDO</span>
+        <span class="ls">Ikatan Konsultan<br>Kesehatan Indonesia</span>
+      </div>
+      <div class="logo-col r">
+        <img src="data:image/png;base64,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" alt="FCHMC">
+        <span class="ln">FCHMC</span>
+        <span class="ls">Fellow of Certified<br>Health Management<br>Consultants</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;justify-content:flex-end;align-self:stretch;">
+      <span class="hero-name">dr. Daryo Soemitro, Sp.BS, FCHMC</span>
+      <span class="hero-role">Digital Health Transformation Advisor &nbsp;|&nbsp; IKKESINDO</span>
+      <span class="hero-ver">V.28062026</span>
+    </div>
+  </div>
+  <p class="hero-ttl">RS Anda di level berapa —<br><span>dan apa yang harus dikerjakan duluan?</span></p>
+  <p class="hero-sub-ttl">Dokumen Regulasi yang Menopang Dashboard Direksi &nbsp;|&nbsp; Serial #6</p>
+  <div class="hero-tags">
+    <span class="htag gold">DMI Kemenkes 2023</span>
+    <span class="htag">HOT Balance</span>
+    <span class="htag">Covey Priority Matrix</span>
+    <span class="htag">Peraturan Internal RS</span>
+  </div>
+</div>
+</div>
+
+<div class="wrap">
+
+<!-- SECTION 1: TIGA LANDASAN -->
+<div class="sec">
+  <div class="sec-lbl">Landasan Assessment Ini</div>
+  <div class="sec-ttl">Tiga pilar yang mendasari analisis prioritas RS Anda</div>
+  <div class="sec-dsc">Assessment ini tidak berdiri sendiri — dibangun di atas tiga rujukan yang saling melengkapi.</div>
+  <div class="info-grid">
+    <div class="info-box pi">
+      <div class="info-icon">⚖️</div>
+      <div class="info-title">Peraturan Internal RS</div>
+      <div class="info-desc">HBL / Statuta RS adalah fondasi tertinggi — di atas seluruh SK Payung, Pedoman, SOP, dan Formulir. Tanpa peraturan internal yang sah, seluruh rantai regulasi di bawahnya berdiri di atas fondasi yang rapuh.</div>
+      <span class="info-ref">PMK 6/2026 Psl 61-65 · STARKES TKRS 1 EP 1</span>
+    </div>
+    <div class="info-box cv">
+      <div class="info-icon">🎯</div>
+      <div class="info-title">Covey Priority Matrix</div>
+      <div class="info-desc">Stephen Covey (1989) — Habit 3: "Put First Things First." Eisenhower Matrix diaplikasikan pada konteks regulasi SIMRS RS: Q2 (Penting, Tidak Mendesak) adalah kuadran kepemimpinan yang paling sering diabaikan — padahal inilah yang mengubah segalanya.</div>
+      <span class="info-ref">Covey, 7 Habits (1989) · Eisenhower Matrix</span>
+    </div>
+    <div class="info-box dm">
+      <div class="info-icon">📊</div>
+      <div class="info-title">DMI Kemenkes 2023</div>
+      <div class="info-desc">Digital Maturity Index — instrumen resmi Kemenkes RI untuk mengukur kematangan digital RS. Assessment ini menggunakan 7 komponen DMI sebagai basis diagnosis, sehingga hasilnya dapat dibandingkan dengan data nasional 1.549 RS Indonesia.</div>
+      <span class="info-ref">Pusdatin Kemenkes & USAID CHISU · 2023</span>
+    </div>
+  </div>
+</div>
+
+<!-- PREREQ 1: HBL -->
+<div class="sec" style="padding-top:0;">
+  <div class="prereq">
+    <div class="prereq-head">
+      <span class="prereq-badge">PRASYARAT REGULASI</span>
+      <span class="prereq-title">Apakah Peraturan Internal RS (HBL/Statuta) sudah valid?</span>
+    </div>
+    <div class="prereq-body">
+      Sebelum membahas SIMRS atau dashboard — ada satu pertanyaan mendasar yang harus dijawab lebih dulu. <b>Peraturan Internal RS</b> adalah dokumen tertinggi dalam hierarki regulasi internal RS, yang mengatur hubungan antara pemilik, Dewan Pengawas, dan Direksi. Seluruh SK Payung, Pedoman, SOP, dan Formulir yang akan dibahas dalam assessment ini hanya memiliki kekuatan hukum jika berpijak pada peraturan internal RS yang sah dan masih berlaku.<br><br>
+      Terdiri dari dua bagian: <b>(1) Peraturan Organisasi RS</b> — mengatur tata kelola korporat; dan <b>(2) Peraturan Staf Medis</b> — mengatur tata kelola klinis. Keduanya harus ada, konsisten satu sama lain, dan direview secara berkala.
+    </div>
+    <div class="prereq-ref">📌 PMK 6/2026 Psl 61-65 (Tata Kelola RS) · STARKES TKRS 1 EP 1 · TKRS 2 EP 1-2</div>
+  </div>
+
+<!-- PREREQ 2: HUMAN -->
+  <div class="prereq-human">
+    <div class="prereq-head">
+      <span class="prereq-badge" style="background:#E74C3C;">PRASYARAT HUMAN</span>
+      <span class="prereq-title">Apakah Direksi sudah berkomitmen penuh pada transformasi digital?</span>
+    </div>
+    <div class="prereq-body">
+      Dalam kerangka HOT (Human-Organisation-Technology), <b>Human adalah prasyarat</b> — bukan variabel yang diukur. DMI Kemenkes 2023 Komponen V (SDM, Keterampilan & Penggunaan SIMRS) mengkonfirmasi: <i>"RS dengan SDM pengelola SIMRS memiliki level kematangan digital yang lebih tinggi."</i><br><br>
+      Tanpa komitmen Direksi yang nyata (bukan hanya persetujuan formal), tidak ada regulasi apapun yang akan mengubah perilaku organisasi. Ini adalah <b>faktor Awareness & Desire</b> dalam ADKAR framework — yang harus ada sebelum Knowledge, Ability, dan Reinforcement bisa bekerja.
+    </div>
+    <div class="prereq-ref">📌 DMI Kemenkes 2023 Komponen V · HOT Framework (Leavitt, 1965) · ADKAR (Prosci)</div>
+  </div>
+</div>
+
+<!-- SECTION 2: DMI ASSESSMENT -->
+<div class="sec" style="padding-top:0;">
+  <div class="sec-lbl">Assessment Kematangan Digital</div>
+  <div class="sec-ttl">7 Komponen DMI — di mana posisi RS Anda?</div>
+  <div class="sec-dsc">Pilih satu jawaban per komponen. Hasil level DMI muncul otomatis dan dapat dibandingkan dengan data nasional 1.549 RS Indonesia (Kemenkes 2023).</div>
+
+  <div class="dmi-form">
+
+    <!-- K1 -->
+    <div class="dmi-komponen">
+      <div class="dmi-k-head">
+        <div class="dmi-k-num">I</div>
+        <div><div class="dmi-k-title">Sistem Informasi & Infrastruktur</div>
+        <div class="dmi-k-sub">Ketersediaan & kelengkapan modul SIMRS</div></div>
+      </div>
+      <div class="dmi-opts" data-k="0">
+        <div class="dmi-opt" onclick="setDmi(0,1,this)"><div class="dmi-opt-val">1</div><div class="dmi-opt-txt">SIMRS tidak ada atau hanya digunakan sekedarnya (Excel/manual)<span class="dmi-opt-hot hot-h">Human dominan</span></div></div>
+        <div class="dmi-opt" onclick="setDmi(0,2,this)"><div class="dmi-opt-val">2</div><div class="dmi-opt-txt">SIMRS ada tapi hanya modul administrasi dasar (pendaftaran, billing)<span class="dmi-opt-hot hot-h">Human-Org</span></div></div>
+        <div class="dmi-opt" onclick="setDmi(0,3,this)"><div class="dmi-opt-val">3</div><div class="dmi-opt-txt">SIMRS mencakup front-office & back-office, sebagian besar unit menggunakan<span class="dmi-opt-hot hot-o">Org dominan</span></div></div>
+        <div class="dmi-opt" onclick="setDmi(0,4,this)"><div class="dmi-opt-val">4</div><div class="dmi-opt-txt">SIMRS lengkap, semua unit terhubung, data mengalir antar modul<span class="dmi-opt-hot hot-t">Tech-Org</span></div></div>
+        <div class="dmi-opt" onclick="setDmi(0,5,this)"><div class="dmi-opt-val">5</div><div class="dmi-opt-txt">SIMRS terintegrasi penuh termasuk RME, dashboard real-time, siap SATUSEHAT<span class="dmi-opt-hot hot-t">Tech dominan</span></div></div>
+      </div>
+    </div>
+
+    <!-- K2 -->
+    <div class="dmi-komponen">
+      <div class="dmi-k-head">
+        <div class="dmi-k-num">II</div>
+        <div><div class="dmi-k-title">Interoperabilitas</div>
+        <div class="dmi-k-sub">Kemampuan sistem untuk saling berbagi data</div></div>
+      </div>
+      <div class="dmi-opts" data-k="1">
+        <div class="dmi-opt" onclick="setDmi(1,1,this)"><div class="dmi-opt-val">1</div><div class="dmi-opt-txt">Tidak ada integrasi — setiap sistem berdiri sendiri</div></div>
+        <div class="dmi-opt" onclick="setDmi(1,2,this)"><div class="dmi-opt-val">2</div><div class="dmi-opt-txt">Beberapa modul SIMRS terhubung, data masih perlu rekap ulang</div></div>
+        <div class="dmi-opt" onclick="setDmi(1,3,this)"><div class="dmi-opt-val">3</div><div class="dmi-opt-txt">Integrasi internal sudah berjalan, mulai terhubung ke sistem eksternal</div></div>
+        <div class="dmi-opt" onclick="setDmi(1,4,this)"><div class="dmi-opt-val">4</div><div class="dmi-opt-txt">Data mengalir otomatis antar unit, sudah terhubung dengan BPJS/SATUSEHAT sebagian</div></div>
+        <div class="dmi-opt" onclick="setDmi(1,5,this)"><div class="dmi-opt-val">5</div><div class="dmi-opt-txt">Interoperabilitas penuh — real-time dengan SATUSEHAT, standar FHIR diterapkan</div></div>
+      </div>
+    </div>
+
+    <!-- K3 -->
+    <div class="dmi-komponen">
+      <div class="dmi-k-head">
+        <div class="dmi-k-num">III</div>
+        <div><div class="dmi-k-title">Manajemen & Tata Kelola Unit IT</div>
+        <div class="dmi-k-sub">Rencana strategis, regulasi, dan pengelolaan unit SIMRS<span class="dmi-opt-hot hot-o" style="margin-left:6px;">Komponen Organisasi</span></div></div>
+      </div>
+      <div class="dmi-opts" data-k="2">
+        <div class="dmi-opt" onclick="setDmi(2,1,this)"><div class="dmi-opt-val">1</div><div class="dmi-opt-txt">Tidak ada rencana strategis SIMRS, tidak ada unit pengelola yang jelas</div></div>
+        <div class="dmi-opt" onclick="setDmi(2,2,this)"><div class="dmi-opt-val">2</div><div class="dmi-opt-txt">Ada unit IT tapi belum ada SK/regulasi yang menetapkan tata kelolanya</div></div>
+        <div class="dmi-opt" onclick="setDmi(2,3,this)"><div class="dmi-opt-val">3</div><div class="dmi-opt-txt">Ada rencana strategis SIMRS yang ditetapkan Direksi, unit IT sudah terstruktur</div></div>
+        <div class="dmi-opt" onclick="setDmi(2,4,this)"><div class="dmi-opt-val">4</div><div class="dmi-opt-txt">Rencana strategis dievaluasi berkala, SK tata kelola IT lengkap dan berlaku</div></div>
+        <div class="dmi-opt" onclick="setDmi(2,5,this)"><div class="dmi-opt-val">5</div><div class="dmi-opt-txt">Tata kelola IT terintegrasi dengan rencana strategis RS, diaudit secara rutin</div></div>
+      </div>
+    </div>
+
+    <!-- K4 -->
+    <div class="dmi-komponen">
+      <div class="dmi-k-head">
+        <div class="dmi-k-num">IV</div>
+        <div><div class="dmi-k-title">Data Analytics</div>
+        <div class="dmi-k-sub">Penggunaan data untuk pengambilan keputusan</div></div>
+      </div>
+      <div class="dmi-opts" data-k="3">
+        <div class="dmi-opt" onclick="setDmi(3,1,this)"><div class="dmi-opt-val">1</div><div class="dmi-opt-txt">Keputusan berbasis intuisi — tidak ada data terstruktur yang digunakan</div></div>
+        <div class="dmi-opt" onclick="setDmi(3,2,this)"><div class="dmi-opt-val">2</div><div class="dmi-opt-txt">Ada laporan Excel/manual, tapi tidak konsisten dan tidak real-time</div></div>
+        <div class="dmi-opt" onclick="setDmi(3,3,this)"><div class="dmi-opt-val">3</div><div class="dmi-opt-txt">Dashboard Direksi ada, diisi secara rutin (meski sebagian masih manual)</div></div>
+        <div class="dmi-opt" onclick="setDmi(3,4,this)"><div class="dmi-opt-val">4</div><div class="dmi-opt-txt">Dashboard terisi otomatis dari SIMRS, digunakan sebagai dasar keputusan harian</div></div>
+        <div class="dmi-opt" onclick="setDmi(3,5,this)"><div class="dmi-opt-val">5</div><div class="dmi-opt-txt">Analitik prediktif dan big data digunakan untuk perencanaan strategis RS</div></div>
+      </div>
+    </div>
+
+    <!-- K5 -->
+    <div class="dmi-komponen">
+      <div class="dmi-k-head">
+        <div class="dmi-k-num">V</div>
+        <div><div class="dmi-k-title">SDM, Keterampilan & Penggunaan SIMRS</div>
+        <div class="dmi-k-sub">Literasi digital dan adopsi SIMRS oleh staf<span class="dmi-opt-hot hot-h" style="margin-left:6px;">Komponen Human</span></div></div>
+      </div>
+      <div class="dmi-opts" data-k="4">
+        <div class="dmi-opt" onclick="setDmi(4,1,this)"><div class="dmi-opt-val">1</div><div class="dmi-opt-txt">< 25% staf menggunakan SIMRS, literasi digital sangat rendah</div></div>
+        <div class="dmi-opt" onclick="setDmi(4,2,this)"><div class="dmi-opt-val">2</div><div class="dmi-opt-txt">25-50% staf menggunakan SIMRS, pelatihan belum terstruktur</div></div>
+        <div class="dmi-opt" onclick="setDmi(4,3,this)"><div class="dmi-opt-val">3</div><div class="dmi-opt-txt">50-75% staf menggunakan SIMRS, ada program pelatihan digital rutin</div></div>
+        <div class="dmi-opt" onclick="setDmi(4,4,this)"><div class="dmi-opt-val">4</div><div class="dmi-opt-txt">> 75% staf aktif menggunakan SIMRS, ada IT champion di tiap unit</div></div>
+        <div class="dmi-opt" onclick="setDmi(4,5,this)"><div class="dmi-opt-val">5</div><div class="dmi-opt-txt">Seluruh staf terlibat, budaya berbasis data sudah tertanam kuat</div></div>
+      </div>
+    </div>
+
+    <!-- K6 -->
+    <div class="dmi-komponen">
+      <div class="dmi-k-head">
+        <div class="dmi-k-num">VI</div>
+        <div><div class="dmi-k-title">Keamanan, Privasi & Kerahasiaan Data</div>
+        <div class="dmi-k-sub">Kebijakan dan implementasi keamanan data pasien</div></div>
+      </div>
+      <div class="dmi-opts" data-k="5">
+        <div class="dmi-opt" onclick="setDmi(5,1,this)"><div class="dmi-opt-val">1</div><div class="dmi-opt-txt">Tidak ada kebijakan keamanan data yang tertulis</div></div>
+        <div class="dmi-opt" onclick="setDmi(5,2,this)"><div class="dmi-opt-val">2</div><div class="dmi-opt-txt">Ada kebijakan dasar tapi belum diimplementasikan secara konsisten</div></div>
+        <div class="dmi-opt" onclick="setDmi(5,3,this)"><div class="dmi-opt-val">3</div><div class="dmi-opt-txt">SK keamanan data ada, prosedur keamanan berjalan, proteksi data dasar aktif</div></div>
+        <div class="dmi-opt" onclick="setDmi(5,4,this)"><div class="dmi-opt-val">4</div><div class="dmi-opt-txt">Sistem keamanan diuji secara berkala, kebijakan PDP (UU 27/2022) diimplementasikan</div></div>
+        <div class="dmi-opt" onclick="setDmi(5,5,this)"><div class="dmi-opt-val">5</div><div class="dmi-opt-txt">Keamanan data diaudit eksternal, zero-trust architecture, enkripsi penuh</div></div>
+      </div>
+    </div>
+
+    <!-- K7 -->
+    <div class="dmi-komponen">
+      <div class="dmi-k-head">
+        <div class="dmi-k-num">VII</div>
+        <div><div class="dmi-k-title">RME & Pusat Layanan Pasien</div>
+        <div class="dmi-k-sub">Kedalaman rekam medis elektronik & dashboard Direksi<span class="dmi-opt-hot hot-t" style="margin-left:6px;">Komponen Technology</span></div></div>
+      </div>
+      <div class="dmi-opts" data-k="6">
+        <div class="dmi-opt" onclick="setDmi(6,1,this)"><div class="dmi-opt-val">1</div><div class="dmi-opt-txt">RME belum ada — rekam medis masih kertas sepenuhnya</div></div>
+        <div class="dmi-opt" onclick="setDmi(6,2,this)"><div class="dmi-opt-val">2</div><div class="dmi-opt-txt">RME sebatas administratif (pendaftaran, billing) — klinis masih kertas</div></div>
+        <div class="dmi-opt" onclick="setDmi(6,3,this)"><div class="dmi-opt-val">3</div><div class="dmi-opt-txt">RME mencakup farmasi & penunjang medis, dashboard Direksi ada meski sebagian manual</div></div>
+        <div class="dmi-opt" onclick="setDmi(6,4,this)"><div class="dmi-opt-val">4</div><div class="dmi-opt-txt">RME lengkap termasuk dokumentasi keperawatan, dashboard Direksi otomatis dari SIMRS</div></div>
+        <div class="dmi-opt" onclick="setDmi(6,5,this)"><div class="dmi-opt-val">5</div><div class="dmi-opt-txt">RME terintegrasi penuh, sistem pendukung keputusan klinis aktif, PACS & AI tersedia</div></div>
+      </div>
+    </div>
+
+  </div><!-- end dmi-form -->
+
+  <!-- DMI RESULT -->
+  <div class="dmi-result" id="dmi-result">
+    <div class="dmi-res-head">
+      <div class="dmi-level-badge" id="dmi-badge"></div>
+      <div>
+        <div class="dmi-res-title" id="dmi-title"></div>
+        <div class="dmi-res-sub" id="dmi-sub"></div>
+      </div>
+    </div>
+    <div class="dmi-gauge">
+      <div class="dmi-gauge-bar"><div class="dmi-gauge-fill" id="dmi-fill"></div></div>
+      <div class="dmi-gauge-labels">
+        <span class="dmi-gauge-label">Level 1<br>Ad hoc</span>
+        <span class="dmi-gauge-label">Level 2<br>Inisiasi</span>
+        <span class="dmi-gauge-label">Level 3<br>Terbentuk</span>
+        <span class="dmi-gauge-label">Level 4<br>Terkelola</span>
+        <span class="dmi-gauge-label">Level 5<br>Optimal</span>
+      </div>
+    </div>
+    <div class="dmi-national" id="dmi-national"></div>
+    <div class="dmi-hot-profile">
+      <div class="dmi-hot-item hh"><div class="dmi-hot-pct" id="hot-h">—</div><div class="dmi-hot-lbl">Human</div></div>
+      <div class="dmi-hot-item ho"><div class="dmi-hot-pct" id="hot-o">—</div><div class="dmi-hot-lbl">Organisation</div></div>
+      <div class="dmi-hot-item ht"><div class="dmi-hot-pct" id="hot-t">—</div><div class="dmi-hot-lbl">Technology</div></div>
+    </div>
+    <div class="dmi-res-desc" id="dmi-desc"></div>
+    <div class="dmi-res-rec" id="dmi-rec"></div>
+  </div>
+
+</div><!-- end sec -->
+
+<!-- SECTION 3: COVEY MATRIX -->
+<div class="sec" style="padding-top:0;" id="covey-sec">
+
+  <!-- LEVEL 1-2 -->
+  <div class="covey-wrap" id="cov-l12">
+    <div class="sec-lbl">Prioritas Implementasi — DMI Level 1-2</div>
+    <div class="sec-ttl">Bangun fondasi dulu — jangan melompat ke teknologi</div>
+    <div class="covey-basis">
+      <div class="covey-basis-lbl">Dasar Penempatan Kuadran</div>
+      Covey Q2 (Penting, Tidak Mendesak) diprioritaskan karena dokumen-dokumen ini adalah <b>prasyarat hukum</b> yang tidak akan memicu krisis hari ini jika belum ada — tapi tanpanya, seluruh dashboard tidak memiliki legitimasi jangka panjang. <b>Q1</b> (Mendesak) adalah dokumen yang gap-nya dapat berdampak malam ini jika terjadi insiden. Penempatan berdasarkan: PMK 6/2026 Psl 74 (kewajiban SIMRS), STARKES MRMIK 13 (tata kelola IT), dan data DMI Kemenkes 2023 yang menunjukkan mayoritas RS Level 1-2 gagal karena tidak memiliki fondasi regulasi.
+    </div>
+    <div class="caxis"><span>← Tidak Mendesak</span><span>Mendesak →</span></div>
+    <div class="cgrid">
+      <div class="qcard q2">
+        <div class="qhd"><span class="qbdg">Q2</span><div><div class="qttl">Penting · Tidak Mendesak</div><div class="qsub">⭐ Mulai dari sini — fondasi segalanya</div></div></div>
+        <div class="qitem" onclick="showDet('p05','q2')"><div class="qdot"></div><span class="qcode">P-05</span><span class="qlbl">SK Direktur tentang SIMRS & Dashboard</span><span class="qarr">›</span></div>
+        <div class="qitem" onclick="showDet('p01','q2')"><div class="qdot"></div><span class="qcode">P-01</span><span class="qlbl">SK Direktur tentang Kebijakan Pelayanan RS</span><span class="qarr">›</span></div>
+        <div class="qitem" onclick="showDet('f01','q2')"><div class="qdot"></div><span class="qcode">F-01</span><span class="qlbl">Formulir Sensus Harian (standarisasi pertama)</span><span class="qarr">›</span></div>
+        <div class="qitem" onclick="showDet('f15','q2')"><div class="qdot"></div><span class="qcode">F-15</span><span class="qlbl">Formulir Dashboard Harian Direktur</span><span class="qarr">›</span></div>
+        <div class="qitem" onclick="showDet('f07','q2')"><div class="qdot"></div><span class="qcode">F-07</span><span class="qlbl">Formulir Pelaporan Insiden</span><span class="qarr">›</span></div>
+      </div>
+      <div class="qcard q1">
+        <div class="qhd"><span class="qbdg">Q1</span><div><div class="qttl">Penting · Mendesak</div><div class="qsub">Gap-nya berdampak malam ini</div></div></div>
+        <div class="qitem" onclick="showDet('t01','q1')"><div class="qdot"></div><span class="qcode">T-01</span><span class="qlbl">SK Tim Jaga & On-Call Malam</span><span class="qarr">›</span></div>
+        <div class="qitem" onclick="showDet('sp01','q1')"><div class="qdot"></div><span class="qcode">SP-01</span><span class="qlbl">SOP Eskalasi Masalah Kritis ke Direksi</span><span class="qarr">›</span></div>
+        <div class="qitem" onclick="showDet('f11','q1')"><div class="qdot"></div><span class="qcode">F-11</span><span class="qlbl">Formulir Stok Darah Harian</span><span class="qarr">›</span></div>
+        <div class="qitem" onclick="showDet('p03','q1')"><div class="qdot"></div><span class="qcode">P-03</span><span class="qlbl">SK Keselamatan Pasien</span><span class="qarr">›</span></div>
+      </div>
+      <div class="qcard q3">
+        <div class="qhd"><span class="qbdg">Q3</span><div><div class="qttl">Tidak Penting · Mendesak</div><div class="qsub">Delegasikan</div></div></div>
+        <div class="qitem nc"><div class="qdot"></div><span class="qlbl">Laporan ad-hoc tanpa template baku</span></div>
+        <div class="qitem nc"><div class="qdot"></div><span class="qlbl">Beli SIMRS baru sebelum formulir terstandar</span></div>
+        <div class="qitem nc"><div class="qdot"></div><span class="qlbl">Pelatihan IT sebelum regulasi ada</span></div>
+      </div>
+      <div class="qcard q4">
+        <div class="qhd"><span class="qbdg">Q4</span><div><div class="qttl">Tidak Penting · Tidak Mendesak</div><div class="qsub">Tunda</div></div></div>
+        <div class="qitem nc"><div class="qdot"></div><span class="qlbl">Fitur AI & prediktif analitik</span></div>
+        <div class="qitem nc"><div class="qdot"></div><span class="qlbl">Integrasi IoT alat medis</span></div>
+        <div class="qitem nc"><div class="qdot"></div><span class="qlbl">Mobile app pasien</span></div>
+      </div>
+    </div>
+    <div class="detail" id="det-l12"></div>
+  </div>
+
+  <!-- LEVEL 3-4 -->
+  <div class="covey-wrap" id="cov-l34">
+    <div class="sec-lbl">Prioritas Implementasi — DMI Level 3-4</div>
+    <div class="sec-ttl">Sambungkan silo — legitimasi regulasi adalah kuncinya</div>
+    <div class="covey-basis">
+      <div class="covey-basis-lbl">Dasar Penempatan Kuadran</div>
+      Di Level 3-4, sistem sudah ada tapi belum terintegrasi. Covey Q2 di tahap ini adalah dokumen yang <b>mengikat alur data</b> — tanpa SK Dashboard (T-09) dan SOP end-of-day (ST-10), data dalam SIMRS tidak mengalir ke Direktur secara sah. Penempatan berdasarkan: STARKES PMKP 5 EP 1-2 (validasi data indikator), MRMIK 13 EP 1-2 (tata kelola TIK), dan temuan DMI 2023 bahwa Level 3 (mayoritas RS Indonesia) sering gagal bukan karena teknologi — tapi karena tidak ada regulasi yang mengikat alur data.
+    </div>
+    <div class="caxis"><span>← Tidak Mendesak</span><span>Mendesak →</span></div>
+    <div class="cgrid">
+      <div class="qcard q2">
+        <div class="qhd"><span class="qbdg">Q2</span><div><div class="qttl">Penting · Tidak Mendesak</div><div class="qsub">⭐ Ini yang menyambungkan silo</div></div></div>
+        <div class="qitem" onclick="showDet('t09','q2')"><div class="qdot"></div><span class="qcode">T-09</span><span class="qlbl">SK Dashboard & Indikator Kinerja RS</span><span class="qarr">›</span></div>
+        <div class="qitem" onclick="showDet('st10','q2')"><div class="qdot"></div><span class="qcode">ST-10</span><span class="qlbl">SOP Rekap & Distribusi Dashboard pk.15.00</span><span class="qarr">›</span></div>
+        <div class="qitem" onclick="showDet('pd07','q2')"><div class="qdot"></div><span class="qcode">PD-07</span><span class="qlbl">Pedoman Sistem Informasi RS</span><span class="qarr">›</span></div>
+        <div class="qitem" onclick="showDet('sp04','q2')"><div class="qdot"></div><span class="qcode">SP-04</span><span class="qlbl">SOP Kontingensi Kegagalan SIMRS</span><span class="qarr">›</span></div>
+        <div class="qitem" onclick="showDet('pd06','q2')"><div class="qdot"></div><span class="qcode">PD-06</span><span class="qlbl">Pedoman PMKP & Profil Indikator</span><span class="qarr">›</span></div>
+      </div>
+      <div class="qcard q1">
+        <div class="qhd"><span class="qbdg">Q1</span><div><div class="qttl">Penting · Mendesak</div><div class="qsub">Gap regulasi yang menghambat data</div></div></div>
+        <div class="qitem" onclick="showDet('t08','q1')"><div class="qdot"></div><span class="qcode">T-08</span><span class="qlbl">SK Pelaporan Insiden — jalur digital</span><span class="qarr">›</span></div>
+        <div class="qitem" onclick="showDet('t02','q1')"><div class="qdot"></div><span class="qcode">T-02</span><span class="qlbl">SK Komite Mutu yang masih aktif & valid</span><span class="qarr">›</span></div>
+        <div class="qitem" onclick="showDet('f09','q1')"><div class="qdot"></div><span class="qcode">F-09</span><span class="qlbl">Formulir Kepatuhan Indikator Mutu</span><span class="qarr">›</span></div>
+        <div class="qitem" onclick="showDet('f15','q1')"><div class="qdot"></div><span class="qcode">F-15</span><span class="qlbl">Dashboard Harian Direktur — validasi data</span><span class="qarr">›</span></div>
+      </div>
+      <div class="qcard q3">
+        <div class="qhd"><span class="qbdg">Q3</span><div><div class="qttl">Tidak Penting · Mendesak</div><div class="qsub">Jebakan energi — hati-hati</div></div></div>
+        <div class="qitem nc"><div class="qdot"></div><span class="qlbl">Upgrade SIMRS sebelum regulasi tersambung</span></div>
+        <div class="qitem nc"><div class="qdot"></div><span class="qlbl">Tambah modul SIMRS tanpa dasar regulasi</span></div>
+        <div class="qitem nc"><div class="qdot"></div><span class="qlbl">Pelatihan IT tanpa SOP yang mengikat</span></div>
+      </div>
+      <div class="qcard q4">
+        <div class="qhd"><span class="qbdg">Q4</span><div><div class="qttl">Tidak Penting · Tidak Mendesak</div><div class="qsub">Tunda sampai silo terselesaikan</div></div></div>
+        <div class="qitem nc"><div class="qdot"></div><span class="qlbl">Business intelligence & big data</span></div>
+        <div class="qitem nc"><div class="qdot"></div><span class="qlbl">Integrasi SATUSEHAT penuh</span></div>
+        <div class="qitem nc"><div class="qdot"></div><span class="qlbl">Telemedicine & remote monitoring</span></div>
+      </div>
+    </div>
+    <div class="detail" id="det-l34"></div>
+  </div>
+
+  <!-- LEVEL 5 -->
+  <div class="covey-wrap" id="cov-l5">
+    <div class="sec-lbl">Prioritas Implementasi — DMI Level 5</div>
+    <div class="sec-ttl">Pertahankan fondasi — inovasi terukur berbasis bukti</div>
+    <div class="covey-basis">
+      <div class="covey-basis-lbl">Dasar Penempatan Kuadran</div>
+      Di Level 5, sistem sudah optimal terintegrasi. Covey Q2 bergeser ke <b>pemeliharaan & inovasi</b> — memastikan regulasi yang ada tidak kadaluarsa seiring perubahan STARKES, PMK, dan perkembangan teknologi. Penempatan berdasarkan: PMK 6/2026 Psl 83 (RS wajib menyesuaikan dalam 2 tahun), STARKES TKRS 1 EP 2 (review regulasi berkala), dan prinsip Covey bahwa Q2 di level matang adalah tentang <i>renewal</i> — memperbarui yang sudah ada, bukan membangun yang baru.
+    </div>
+    <div class="caxis"><span>← Tidak Mendesak</span><span>Mendesak →</span></div>
+    <div class="cgrid">
+      <div class="qcard q2">
+        <div class="qhd"><span class="qbdg">Q2</span><div><div class="qttl">Penting · Tidak Mendesak</div><div class="qsub">⭐ Jaga fondasi tetap relevan</div></div></div>
+        <div class="qitem" onclick="showDet('p01','q2')"><div class="qdot"></div><span class="qcode">P-01</span><span class="qlbl">Review & update SK Payung (maks 3 tahun)</span><span class="qarr">›</span></div>
+        <div class="qitem" onclick="showDet('pd06','q2')"><div class="qdot"></div><span class="qcode">PD-06</span><span class="qlbl">Update profil indikator sesuai STARKES terbaru</span><span class="qarr">›</span></div>
+        <div class="qitem" onclick="showDet('t09','q2')"><div class="qdot"></div><span class="qcode">T-09</span><span class="qlbl">Kembangkan indikator prediktif di dashboard</span><span class="qarr">›</span></div>
+        <div class="qitem" onclick="showDet('sp04','q2')"><div class="qdot"></div><span class="qcode">SP-04</span><span class="qlbl">Update SOP kontingensi sesuai RTO aktual</span><span class="qarr">›</span></div>
+      </div>
+      <div class="qcard q1">
+        <div class="qhd"><span class="qbdg">Q1</span><div><div class="qttl">Penting · Mendesak</div><div class="qsub">Respons terhadap perubahan regulasi</div></div></div>
+        <div class="qitem nc"><div class="qdot"></div><span class="qlbl">Penyesuaian dokumen pasca survei akreditasi</span></div>
+        <div class="qitem nc"><div class="qdot"></div><span class="qlbl">Update regulasi sesuai PMK/KMK terbaru</span></div>
+        <div class="qitem nc"><div class="qdot"></div><span class="qlbl">Gap SATUSEHAT yang belum terintegrasi</span></div>
+      </div>
+      <div class="qcard q3">
+        <div class="qhd"><span class="qbdg">Q3</span><div><div class="qttl">Tidak Penting · Mendesak</div><div class="qsub">Delegasikan ke tim operasional</div></div></div>
+        <div class="qitem nc"><div class="qdot"></div><span class="qlbl">Permintaan laporan khusus ad-hoc</span></div>
+        <div class="qitem nc"><div class="qdot"></div><span class="qlbl">Troubleshooting teknis SIMRS harian</span></div>
+      </div>
+      <div class="qcard q4">
+        <div class="qhd"><span class="qbdg">Q4</span><div><div class="qttl">Tidak Penting · Tidak Mendesak</div><div class="qsub">Evaluasi ROI sebelum invest</div></div></div>
+        <div class="qitem nc"><div class="qdot"></div><span class="qlbl">Fitur SIMRS utilisasi < 10%</span></div>
+        <div class="qitem nc"><div class="qdot"></div><span class="qlbl">Duplikasi sistem dengan fungsi yang sama</span></div>
+      </div>
+    </div>
+    <div class="detail" id="det-l5"></div>
+  </div>
+
+</div><!-- end covey-sec -->
+
+<!-- EMBED -->
+<div class="embed-sec">
+  <div class="embed-toggle" onclick="toggleEmbed()">
+    <div>
+      <div class="embed-toggle-txt">🗺 Eksplorasi seluruh peta regulasi yang perlu disiapkan RS Anda</div>
+      <div class="embed-toggle-sub">54 dokumen regulasi · STARKES 2024 · PMK 6/2026 · Navigasi dua arah</div>
+    </div>
+    <span class="embed-arr" id="embed-arr">▼</span>
+  </div>
+  <div class="embed-frame" id="embed-frame">
+    <iframe src="" title="Peta Telusur Regulasi RS" loading="lazy"></iframe>
+  </div>
+</div>
+
+</div><!-- end wrap -->
+
+<!-- CLOSING -->
+<div class="closing">
+<div class="closing-inner" style="text-align:center;">
+  <p class="closing-q">
+    Data yang mengalir dari regulasi yang tertata adalah fondasi —<br>
+    tapi <strong>mengetahui mana yang harus dibangun lebih dulu</strong><br>
+    adalah perbedaan antara transformasi yang berhasil dan yang menguras anggaran.
+  </p>
+  <p class="closing-src">Assessment ini menggunakan kerangka Digital Maturity Index (DMI) Kementerian Kesehatan RI<br>
+  Penilaian Kematangan Digital Rumah Sakit 2023 · Pusdatin Kemenkes & USAID CHISU · n=1.549 RS Indonesia</p>
+</div>
+</div>
+
+<script>
+const PETA='https://neurosur274.github.io/peta-telusur-rs/';
+const dmiAns=[null,null,null,null,null,null,null];
+let activeLevel=null;
+
+const DOCS={
+  'p01':{code:'P-01',layer:'SK Payung',lc:'#B01020',nama:'SK Direktur tentang Kebijakan Pelayanan RS',panduan:'Payung seluruh kebijakan RS. Semua SK Teknis wajib merujuk ke SK ini — tidak sebaliknya. Minimal memuat: ① Ruang lingkup semua jenis pelayanan RS ② Kewenangan eskalasi & on-call Direktur ③ Delegasi kewenangan jika Direktur tidak ada ④ Masa berlaku maks 3 tahun ⑤ Tanda tangan Direktur + stempel RS ⑥ Klausul pencabutan SK sebelumnya.',starkes:'TKRS 1 EP 1-2, TKRS 2 EP 1',pmk:'Psl 36 (kewajiban RS), Psl 40 (fungsi pimpinan)',gap:'Direview minimal setiap 3 tahun. Semua SK Teknis yang ada harus konsisten dengan SK ini.'},
+  'p03':{code:'P-03',layer:'SK Payung',lc:'#B01020',nama:'SK Direktur tentang Keselamatan Pasien',panduan:'Payung seluruh program keselamatan pasien. SP-01, SP-02, T-08 harus merujuk ke SK ini. Minimal memuat: ① Komitmen zero harm ② 6 SKP ③ Definisi KTD/KNC/KTC/KPC/Sentinel ④ Alur pelaporan unit→Komite→Direktur→KNKP ⑤ Budaya just culture.',starkes:'SKP 1-6, PMKP 8 EP 1-2, TKRS 13 EP 1',pmk:'Psl 36 huruf g (standar mutu), Psl 68 (mutu internal)',gap:'Validasi apakah mencakup jalur pelaporan insiden 24 jam non-stop.'},
+  'p05':{code:'P-05',layer:'SK Payung',lc:'#B01020',nama:'SK Direktur tentang Sistem Informasi RS (SIMRS/RME)',panduan:'KRITIS — dasar hukum seluruh sistem informasi RS. Tanpa SK ini dashboard Direktur tidak memiliki legitimasi hukum. Minimal memuat: ① Ruang lingkup modul SIMRS wajib aktif ② Matriks hak akses per jabatan termasuk dashboard Direktur ③ Kewajiban integrasi SATUSEHAT ④ SLA uptime 99% ⑤ Unit pengelola SIMRS & PIC IT.',starkes:'MRMIK 13 EP 1-2, MRMIK 13.1 EP 1',pmk:'Psl 74 (pencatatan & pelaporan wajib via SIMRS)',gap:'KRITIS: tanpa SK ini dashboard Direktur tidak memiliki legitimasi hukum.'},
+  't01':{code:'T-01',layer:'SK Teknis',lc:'#C0392B',nama:'SK Penetapan Tim Jaga & On-Call Malam',panduan:'Hanya mengatur penetapan tim jaga. Minimal memuat: ① Nama & jabatan eksplisit per shift ② Jam tugas termasuk hari libur ③ Kewenangan klinis darurat ④ Alur eskalasi ke Direktur on-call ⑤ Nomor HP on-call aktif 24 jam.',starkes:'KPS 4 EP 1-2, KPS 14 EP 1',pmk:'Psl 36 huruf q (daftar tenaga medis)',gap:'Nama/jabatan harus eksplisit. Update minimal setiap 6 bulan.'},
+  't02':{code:'T-02',layer:'SK Teknis',lc:'#C0392B',nama:'SK Komite Mutu & PMKP',panduan:'Hanya mengatur Komite Mutu. Minimal memuat: ① Susunan komite dengan nama eksplisit ② Tugas & fungsi sesuai STARKES PMKP 1 EP 2 ③ Indikator yang dipantau ④ Frekuensi pelaporan ke Direktur bulanan.',starkes:'PMKP 1 EP 1-3, PMKP 3 EP 1',pmk:'Psl 50 (komite RS), Psl 68 (mutu internal)',gap:'Pastikan SK masih berlaku dan ketua komite aktif.'},
+  't08':{code:'T-08',layer:'SK Teknis',lc:'#C0392B',nama:'SK Pelaporan Insiden Keselamatan Pasien',panduan:'Hanya mengatur alur pelaporan insiden. Minimal memuat: ① Definisi operasional tiap jenis insiden ② Matriks grading risiko 5x5 ③ Alur laporan per grading ④ Timeline: laporan ≤ 24 jam, RCA sentinel ≤ 45 hari.',starkes:'PMKP 8 EP 1-2, PMKP 9 EP 1-3',pmk:'Psl 68 (pelaporan insiden mutu internal)',gap:'SK harus mencakup alur pelaporan insiden sentinel ke Direktur dalam 1x24 jam.'},
+  't09':{code:'T-09',layer:'SK Teknis',lc:'#C0392B',nama:'SK Dashboard & Indikator Kinerja RS',panduan:'KRITIS — dasar hukum operasional dashboard Direktur. Minimal memuat: ① Daftar indikator resmi dashboard ② Definisi operasional (numerator, denominator, target) ③ Sumber data dari modul SIMRS ④ Frekuensi update ⑤ Hak akses dashboard per jabatan ⑥ PIC validasi data.',starkes:'PMKP 5 EP 1-2, TKRS 4 EP 1, MRMIK 13 EP 2',pmk:'Psl 74 (pencatatan dalam SIMRS), Psl 68 (indikator mutu)',gap:'KRITIS: SK ini yang memberi legitimasi dashboard Direksi. Harus ada sebelum ST-10 dan F-15.'},
+  'pd06':{code:'PD-06',layer:'Pedoman',lc:'#2471A3',nama:'Pedoman PMKP & Profil Indikator',panduan:'Panduan teknis mutu. Minimal memuat: ① Profil lengkap tiap indikator ② 12 INM wajib (PMK 30/2022) ③ IMP-RS & IMP-Unit ④ Alur pelaporan ke Direktur bulanan.',starkes:'PMKP 3 EP 1-3, PMKP 5 EP 1-2',pmk:'Psl 67-68 (peningkatan mutu), PMK 30/2022 (12 INMU)',gap:'Harus mencantumkan profil indikator per domain dashboard.'},
+  'pd07':{code:'PD-07',layer:'Pedoman',lc:'#2471A3',nama:'Pedoman Sistem Informasi RS',panduan:'Menjabarkan teknis operasional SIMRS. Minimal memuat: ① Arsitektur modul SIMRS ② Matriks hak akses per role ③ Spesifikasi dashboard eksekutif ④ SLA uptime & prosedur downtime ⑤ Backup & RTO.',starkes:'MRMIK 13 EP 1-2, MRMIK 13.1 EP 1-3',pmk:'Psl 74 (pencatatan & pelaporan dalam SIMRS)',gap:'Cek bab tentang dashboard eksekutif, hak akses Direktur, dan SLA uptime SIMRS.'},
+  'sp01':{code:'SP-01',layer:'SOP Payung',lc:'#1A5276',nama:'SOP Eskalasi Masalah Kritis ke Direksi',panduan:'KRITIS — backbone checklist poin 1 Serial #6. Minimal memuat: ① Definisi masalah kritis ② Bagan alur eskalasi per jenis ③ Timeline respons per level ④ Nomor kontak Direktur on-call langsung dalam body SOP ⑤ Formulir eskalasi.',starkes:'TKRS 3.1 EP 1-2, PMKP 8 EP 1',pmk:'Psl 40 (fungsi pimpinan RS)',gap:'KRITIS: SOP ini harus dipahami semua shift, bukan hanya disimpan di arsip.'},
+  'sp04':{code:'SP-04',layer:'SOP Payung',lc:'#1A5276',nama:'SOP Kontingensi Kegagalan SIMRS',panduan:'Menjamin dashboard Direktur tetap tersedia meski SIMRS tidak berfungsi. Minimal memuat: ① Trigger aktivasi downtime ② Formulir manual pengganti ③ PIC IT on-call (respons ≤ 30 menit) ④ RTO per jenis downtime ⑤ F-15 versi cetak ⑥ RCA pasca downtime > 2 jam.',starkes:'MRMIK 13.1 EP 1-3',pmk:'Psl 74 (pencatatan wajib dalam SIMRS)',gap:'Ada SOP manual backup saat HIS offline? Dashboard Direktur harus tetap bisa diakses.'},
+  'st10':{code:'ST-10',layer:'SOP Teknis',lc:'#2E86C1',nama:'SOP Rekap & Distribusi Dashboard Harian ke Direktur',panduan:'KRITIS — SOP end-of-day yang menggerakkan seluruh rantai data. Minimal memuat: ① Waktu rekap pk.14.00, distribusi pk.15.00 ② PIC rekap (nama & jabatan) ③ Checklist feeder F-01 s.d. F-17 ④ Validasi data sebelum dikirim ⑤ F-15 versi cetak jika SIMRS down.',starkes:'PMKP 5 EP 1-2, TKRS 4 EP 1, MRMIK 13 EP 2',pmk:'Psl 74 (pencatatan & pelaporan dalam SIMRS)',gap:'KRITIS: SOP ini yang men-trigger distribusi dashboard pk.15.00 ke Direktur.'},
+  'f01':{code:'F-01',layer:'Formulir',lc:'#1A6B3A',nama:'Formulir Sensus Harian Rawat Inap',panduan:'Formulir pertama yang harus distandarisasi. Field wajib: TT terisi per unit, TT kosong, pasien masuk, pasien keluar, pasien meninggal, lama rawat kumulatif, BOR auto-calc.',starkes:'MRMIK 3 EP 1-2',pmk:'Psl 74 (pencatatan dalam SIMRS)',gap:'Siapa yang input malam? Cut-off harus sebelum pk.00.00 agar dashboard pagi valid.'},
+  'f07':{code:'F-07',layer:'Formulir',lc:'#1A6B3A',nama:'Formulir Pelaporan Insiden Keselamatan Pasien',panduan:'Field wajib: jenis insiden, tanggal & jam, unit terkait, grading risiko (5x5), PIC investigasi, tindak lanjut segera, notifikasi Direktur. Harus diisi < 2x24 jam.',starkes:'PMKP 8 EP 1-2, PMKP 9 EP 1-3',pmk:'Psl 68 (pelaporan insiden mutu internal)',gap:'Field grading risiko, PIC investigasi, tindak lanjut segera. Harus diisi < 2x24 jam.'},
+  'f09':{code:'F-09',layer:'Formulir',lc:'#1A6B3A',nama:'Formulir Monitoring Kepatuhan Indikator Mutu',panduan:'Field wajib: nama indikator, numerator, denominator, capaian (%), target, gap dari target, unit penanggung jawab. Input harian dari tiap unit.',starkes:'PMKP 5 EP 1-3, PMKP 6 EP 1',pmk:'Psl 68 (pengukuran & pelaporan indikator mutu)',gap:'Field: nama indikator, numerator, denominator, capaian, target. Input harian dari tiap unit.'},
+  'f11':{code:'F-11',layer:'Formulir',lc:'#1A6B3A',nama:'Formulir Laporan Stok Darah Harian',panduan:'Field wajib: stok awal per goldar (O/A/B/AB), darah masuk, darah keluar, stok akhir, status alert (hijau/kuning/merah). Alert merah = koordinasi PMI wajib diaktivasi.',starkes:'PAP 2.7 EP 1-3',pmk:'Psl 13 huruf h (pelayanan darah)',gap:'Field: stok awal, masuk, keluar, stok akhir per goldar dengan traffic light alert.'},
+  'f15':{code:'F-15',layer:'Formulir',lc:'#1A6B3A',nama:'Formulir Dashboard Harian Direktur (Rekap End-of-Day)',panduan:'OUTPUT AKHIR dari seluruh rantai regulasi. Memuat semua indikator Serial #6: BOR, IGD, TT tersedia, pendapatan, cash flow, pending claim, SDM, insiden, keluhan pasien, stok kritis, alat medis, agenda esok hari.',starkes:'PMKP 5 EP 2-3, TKRS 4 EP 1, MRMIK 3 EP 2',pmk:'Psl 74 (pencatatan dalam SIMRS), Psl 68 (laporan mutu)',gap:'KRITIS: semua formulir F-01 s.d. F-17 adalah feeder F-15. Satu feeder kosong = F-15 tidak valid.'}
+};
+
+const DMI_LEVELS={
+  1:{name:'Ad hoc & Fragmentasi',color:'#7F8C8D',bg:'#F5F5F5',fill:'20%',
+    national:'Skor DMI Anda berada di <b>Level 1</b>. Secara nasional, RS Level 1 mewakili kelompok yang memerlukan perhatian mendesak dalam membangun fondasi digitalisasi.',
+    hot:{h:70,o:20,t:10},
+    desc:'Sistem informasi belum terbentuk secara konsisten. Ketergantungan pada individu sangat tinggi — jika orang kunci pergi, data ikut pergi. Ini adalah kondisi yang paling rentan terhadap gangguan operasional.',
+    rec:'<strong>Prioritas pertama:</strong> Standardisasi formulir (F-01, F-07, F-15) dan legitimasi regulasi (P-05, P-01) sebelum memikirkan teknologi baru.',
+    covey:'l12'},
+  2:{name:'Inisiasi',color:'#935116',bg:'#FFF8F0',fill:'40%',
+    national:'Skor DMI Anda berada di <b>Level 2</b>. Pada tahun 2023, 28% RS Indonesia berada di Level 2 — tahap kritis transisi dari manual ke digital.',
+    hot:{h:55,o:30,t:15},
+    desc:'Sistem mulai dibangun tapi masih bersifat inisiatif individual. Data digital ada tapi tersimpan di silo yang tidak saling bicara. Regulasi belum mengikat alur data ke dashboard Direksi.',
+    rec:'<strong>Prioritas:</strong> Bangun fondasi regulasi terlebih dahulu. SK SIMRS (P-05) dan formulir terstandar (F-01 s.d. F-17) adalah prasyarat sebelum teknologi apapun bisa bekerja optimal.',
+    covey:'l12'},
+  3:{name:'Terbentuk & Otoritas',color:'#1A5276',bg:'#EAF4FF',fill:'60%',
+    national:'Skor DMI Anda berada di <b>Level 3</b> — sama dengan mayoritas RS Indonesia (39% pada 2023). RS di level ini sudah memiliki sistem informasi dan peta jalan yang jelas.',
+    hot:{h:30,o:50,t:20},
+    desc:'Sistem ada dan sebagian besar unit menggunakannya. Tantangan utama: data masih di silo, regulasi ada tapi belum mengikat alur data ke dashboard Direksi. Ini tahap paling kritis — banyak RS stagnan di sini.',
+    rec:'<strong>Kunci naik ke Level 4:</strong> Sambungkan silo dengan SK Dashboard (T-09) dan SOP end-of-day (ST-10). Tanpa ini, sistem yang ada tidak akan menghasilkan dashboard yang valid.',
+    covey:'l34'},
+  4:{name:'Terkelola',color:'#1A6B3A',bg:'#EAFAF1',fill:'80%',
+    national:'Skor DMI Anda berada di <b>Level 4</b>. RS Level 4 berada di atas rata-rata nasional — sistem digunakan sesuai kebijakan dan prosedur yang ditetapkan.',
+    hot:{h:20,o:40,t:40},
+    desc:'Organisasi menggunakan SIMRS sesuai struktur dan fungsinya. Dashboard Direksi mulai terisi otomatis. Regulasi sudah mengikat alur data. Fokus beralih ke optimasi dan peningkatan berkelanjutan.',
+    rec:'<strong>Prioritas Q2:</strong> Review & validasi seluruh dokumen regulasi (SK Payung harus < 3 tahun), update profil indikator sesuai STARKES terbaru, kembangkan analitik prediktif.',
+    covey:'l34'},
+  5:{name:'Optimal Terintegrasi',color:'#6C3483',bg:'#F3EAF8',fill:'100%',
+    national:'Skor DMI Anda berada di <b>Level 5</b>. Hanya ~1% RS Indonesia mencapai level ini. Organisasi melakukan maturitas digital secara berkesinambungan.',
+    hot:{h:15,o:35,t:50},
+    desc:'Maturitas digital berjalan berkelanjutan. Data mengalir otomatis, keputusan berbasis bukti, sistem terintegrasi penuh termasuk SATUSEHAT. Tantangan kini adalah mempertahankan relevansi regulasi seiring perubahan teknologi dan kebijakan.',
+    rec:'<strong>Prioritas Q2:</strong> Pastikan regulasi tidak kadaluarsa, update secara proaktif setiap ada perubahan PMK/STARKES, kembangkan inovasi terukur berbasis data.',
+    covey:'l5'}
+};
+
+function setDmi(k,val,el){
+  el.closest('.dmi-opts').querySelectorAll('.dmi-opt').forEach(o=>o.classList.remove('sel'));
+  el.classList.add('sel');
+  dmiAns[k]=val;
+  if(dmiAns.every(a=>a!==null)) calcDmi();
+}
+
+function calcDmi(){
+  const avg=dmiAns.reduce((a,b)=>a+b,0)/7;
+  const level=Math.round(avg);
+  const d=DMI_LEVELS[level];
+  activeLevel=d.covey;
+
+  const res=document.getElementById('dmi-result');
+  res.style.background=d.bg;
+  res.style.border='1.5px solid '+d.color;
+  res.className='dmi-result show';
+
+  document.getElementById('dmi-badge').textContent='L'+level;
+  document.getElementById('dmi-badge').style.background=d.color;
+  document.getElementById('dmi-title').textContent='Level DMI '+level+' — '+d.name;
+  document.getElementById('dmi-sub').textContent='Skor rata-rata: '+avg.toFixed(1)+' dari 5.0';
+  document.getElementById('dmi-fill').style.width=d.fill;
+  document.getElementById('dmi-fill').style.background=d.color;
+  document.getElementById('dmi-national').innerHTML=d.national;
+  document.getElementById('hot-h').textContent=d.hot.h+'%';
+  document.getElementById('hot-o').textContent=d.hot.o+'%';
+  document.getElementById('hot-t').textContent=d.hot.t+'%';
+  document.getElementById('dmi-desc').textContent=d.desc;
+  document.getElementById('dmi-rec').innerHTML=d.rec;
+
+  // Show covey
+  ['l12','l34','l5'].forEach(l=>{
+    document.getElementById('cov-'+l).classList.remove('show');
+  });
+  setTimeout(()=>{
+    document.getElementById('cov-'+d.covey).classList.add('show');
+    document.getElementById('cov-'+d.covey).scrollIntoView({behavior:'smooth',block:'start'});
+  },400);
+
+  res.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function showDet(id,quad){
+  const d=DOCS[id];
+  if(!d) return;
+  document.querySelectorAll('.detail').forEach(el=>{el.classList.remove('show');el.innerHTML='';});
+  document.querySelectorAll('.qitem').forEach(el=>el.classList.remove('active'));
+  if(event&&event.currentTarget) event.currentTarget.classList.add('active');
+
+  const panId='det-'+(activeLevel||'l12');
+  const pan=document.getElementById(panId);
+  if(!pan) return;
+
+  pan.innerHTML=`
+    <div class="det-head">
+      <div class="det-meta">
+        <span class="det-code">${d.code}</span>
+        <span class="det-layer" style="background:${d.lc}">${d.layer}</span>
+      </div>
+      <button class="det-close" onclick="closeDet()">✕ Tutup</button>
+    </div>
+    <div class="det-nama">${d.nama}</div>
+    <div class="det-panduan">
+      <div class="det-panduan-lbl">Panduan isi dokumen</div>
+      <div class="det-panduan-txt">${d.panduan}</div>
+    </div>
+    <div class="det-refs">
+      <div class="det-ref"><div class="det-ref-lbl">STARKES 2024</div>
+        <div class="det-ref-val" style="color:#1A5276">${d.starkes}</div></div>
+      <div class="det-ref"><div class="det-ref-lbl">PMK 6/2026</div>
+        <div class="det-ref-val" style="color:#1A6B3A">${d.pmk}</div></div>
+    </div>
+    <div class="det-gap">
+      <div class="det-gap-lbl">Gap & catatan validasi</div>
+      <div class="det-gap-txt">${d.gap}</div>
+    </div>
+    <div class="det-footer">
+      <a class="det-peta-btn" href="${PETA}" target="_blank">→ Lihat dokumen lengkap di Peta Telusur</a>
+    </div>`;
+  pan.classList.add('show');
+  pan.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function closeDet(){
+  document.querySelectorAll('.detail').forEach(el=>{el.classList.remove('show');el.innerHTML='';});
+  document.querySelectorAll('.qitem').forEach(el=>el.classList.remove('active'));
+}
+
+function toggleEmbed(){
+  const frame=document.getElementById('embed-frame');
+  const arr=document.getElementById('embed-arr');
+  const show=frame.classList.toggle('show');
+  arr.classList.toggle('open',show);
+  arr.textContent=show?'▲':'▼';
+  if(show){
+    const iframe=frame.querySelector('iframe');
+    if(!iframe.src) iframe.src=PETA;
+    frame.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}
+</script>
+</body>
+</html>
